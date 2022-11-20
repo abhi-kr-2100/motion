@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
+import execute from '../lib/execute'
+
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -21,8 +23,8 @@ export default function Home() {
         </p>
 
         <div>
-          <input />
-          <button>»</button>
+          <input id='action-bar' onKeyUp={(e) => { if (e.key === "Enter") onExecuteAction() }} />
+          <button onClick={onExecuteAction}>»</button>
         </div>
 
         <div className={styles.grid}>
@@ -57,4 +59,13 @@ export default function Home() {
       </footer>
     </div >
   )
+}
+
+function onExecuteAction() {
+  const actionBar = document.getElementById('action-bar') as HTMLInputElement;
+  const action = actionBar?.value;
+
+  if (action && action.trim() !== "") {
+    execute(action);
+  }
 }
