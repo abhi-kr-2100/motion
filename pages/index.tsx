@@ -20,6 +20,11 @@ export default function Home() {
           Organize all aspects of your life at one place, at <i>light speed</i>.
         </p>
 
+        <div>
+          <input />
+          <button>»</button>
+        </div>
+
         <div className={styles.grid}>
           <Link href="/currently-reading" className={styles.card}>
             <h2>Currently Reading</h2>
